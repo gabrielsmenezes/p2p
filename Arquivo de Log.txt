@@ -1,0 +1,21 @@
+192.168.1.6 Listar Usuarios da Rede 29/04/18 22:27:59
+192.168.1.6 Listar Arquivos da Rede 29/04/18 22:35:16
+192.168.1.6 Listar Arquivos da Rede 30/04/18 08:08:18
+192.168.1.6 Listar Usuarios da Rede 30/04/18 09:30:23
+192.168.1.6 Listar Arquivos da Rede 30/04/18 09:30:28
+192.168.1.6 Listar Usuarios da Rede 30/04/18 09:33:08
+192.168.1.6 Listar Arquivos da Rede 30/04/18 09:33:12
+192.168.1.6 Listar Usuarios da Rede 30/04/18 09:52:12
+192.168.1.6 Listar Arquivos da Rede 30/04/18 09:52:16
+192.168.1.6 Listar Usuarios da Rede 30/04/18 13:59:37
+192.168.1.6 Listar Usuarios da Rede 30/04/18 13:59:56
+192.168.1.6 Listar Usuarios da Rede 30/04/18 14:05:20
+192.168.1.6 Listar Usuarios da Rede 30/04/18 14:51:12
+192.168.1.6 Listar Usuarios da Rede 30/04/18 14:56:02
+192.168.1.6 Listar Arquivos da Rede 30/04/18 14:56:08
+192.168.1.5 Listar Usuarios da Rede 30/04/18 15:22:47
+192.168.1.6 Listar Usuarios da Rede 30/04/18 15:23:56
+192.168.1.6 Listar Usuarios da Rede 30/04/18 15:38:44
+192.168.1.6  03/05/18 23:22:11
+192.168.1.6  03/05/18 23:22:19
+192.168.1.6  03/05/18 23:22:33
