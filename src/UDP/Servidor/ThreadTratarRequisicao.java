@@ -113,11 +113,12 @@ public class ThreadTratarRequisicao extends Thread{
                     socket.close();
                     break;
                 case(3):
+                    System.out.println("Entrou no caso 3");
                     salvaLog(pacoteRecebido.getAddress(), 3);
                     listaDeArquivos = carregaArquivos();
                     nomeDoArquivo = (String) in.readObject();
                     int tamanho = contemArquivo(nomeDoArquivo, listaDeArquivos);
-                    if (tamanho > 0){
+                    if (tamanho > -1){
                         File a = (File) listaDeArquivos.get(tamanho);
                         out.writeObject(6);
                         out.writeObject(a.length());
@@ -146,11 +147,12 @@ public class ThreadTratarRequisicao extends Thread{
                     }
                     break;
                 case(6):
-                    System.out.println("Entrou no case 6");
+                    System.out.println("Entrou no caso 3");
                     long tamanhoDoArquivo = (long) in.readObject();
+                    System.out.println("Tamanho do arquivo: " + tamanhoDoArquivo);
                     if (tamanhoDoArquivo < 0){
                         System.out.println("Arquivo nao encontrado");
-                    } else System.out.println (tamanhoDoArquivo + " IP: " + pacoteRecebido.getAddress().getHostAddress());
+                    } else System.out.println ("Tamanho do arquivo: " + tamanhoDoArquivo + " IP: " + pacoteRecebido.getAddress().getHostAddress());
                     break;
                 case(7):
                     salvaLog(pacoteRecebido.getAddress(), 7);
