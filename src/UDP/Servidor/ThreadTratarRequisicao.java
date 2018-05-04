@@ -36,6 +36,7 @@ public class ThreadTratarRequisicao extends Thread{
         this.pacoteRecebido = pacoteRecebido;
     }
     private void salvaLog( InetAddress ip, int tipodesolicitacao) throws IOException{
+        String[] tipos = {"Listar Usuarios", "Listar Arquivos", "Procurar Arquivo", "", "", "", "Buscar Arquivo"};
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Date dateobj = new Date();
         FileWriter log = new FileWriter("Arquivo de Log.txt", true);
@@ -43,7 +44,7 @@ public class ThreadTratarRequisicao extends Thread{
         String ipString = ip.getHostAddress();
         bf.write(ipString);
         bf.write(" ");
-        bf.write(tipodesolicitacao);
+        bf.write(tipos[tipodesolicitacao - 1]);
         bf.write(" ");
         bf.write(df.format(dateobj));
         bf.newLine();
@@ -120,11 +121,15 @@ public class ThreadTratarRequisicao extends Thread{
                         File a = (File) listaDeArquivos.get(tamanho);
                         out.writeObject(6);
                         out.writeObject(a.length());
+                    } else {
+                        out.writeObject(6);
+                        out.writeObject( (long) -1);
+                    }
                         pacoteEnviar = new DatagramPacket(arrayOut.toByteArray(), arrayOut.toByteArray().length, pacoteRecebido.getAddress(), 12345);
                         socket = new DatagramSocket();
                         socket.send(pacoteEnviar);
                         socket.close();
-                    }
+                    
                     break;
                 case(4):
 //                    endereco = (InetAddress) in.readObject();
@@ -143,7 +148,9 @@ public class ThreadTratarRequisicao extends Thread{
                 case(6):
                     System.out.println("Entrou no case 6");
                     long tamanhoDoArquivo = (long) in.readObject();
-                    System.out.println (tamanhoDoArquivo + " IP: " + pacoteRecebido.getAddress().getHostAddress());
+                    if (tamanhoDoArquivo < 0){
+                        System.out.println("Arquivo nao encontrado");
+                    } else System.out.println (tamanhoDoArquivo + " IP: " + pacoteRecebido.getAddress().getHostAddress());
                     break;
                 case(7):
                     salvaLog(pacoteRecebido.getAddress(), 7);

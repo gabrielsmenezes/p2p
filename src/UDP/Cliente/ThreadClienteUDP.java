@@ -67,72 +67,74 @@ private LinkedList carregaArquivos(){
 
 
 public void run(){
-    imprimeMenu();
-    ByteArrayOutputStream b;
-    ObjectOutputStream o;
-    DatagramPacket pacote;
-    DatagramSocket socket;
-    int codigoRequisicao = leInteiro();
-    ByteArrayInputStream bin;
-    ObjectInputStream oin;
-    InetAddress endereco;
-    byte[] buffer;
-    try{
-        b = new ByteArrayOutputStream();
-        o = new ObjectOutputStream(b);
-        o.flush();
-        o.writeObject(codigoRequisicao);
-//        System.out.println("Escrevi no ObjectOutputStream");    
-            
-            
-//            byte[] buffer = b.toByteArray();
-//            for(int i = 0; i < buffer.length; i++){
-//                System.out.println((byte) buffer[i]);
-//            }
-            
-            
-            
-            
-            if(codigoRequisicao == 3){
-                String nomeDoArquivo = leString();
-//                if(contemArquivo(nomeDoArquivo)) throw new Exception("Esse arquivo já esta em seu diretorio");
-                o.writeObject(nomeDoArquivo);
-                
-            }
-            if (codigoRequisicao == 7){
-                String nomeDoArquivo = leString();
-//                String ip = leString();
-                endereco = InetAddress.getLocalHost();
-                o.writeObject(endereco);
-                o.writeObject(nomeDoArquivo);
-            }
-            pacote = new  DatagramPacket(b.toByteArray(), b.toByteArray().length, InetAddress.getByName("255.255.255.255"), 12345);
-//            System.out.println("Criei o pacote do cliente");
-            socket = new DatagramSocket();
-//            System.out.println("Criei o socket do cliente");
-            socket.send(pacote);
-//            System.out.println("Enviei o pacote do cliente");
-            socket.close();
-//            System.out.println("Fechei o socket cliente");
-            pacote = null;
-            b = null;
-            o = null;
-            
-            
-            
-           
-//            
-//            if(codigoRequisicao == 5){
-//                LinkedList listaDeArquivos = (LinkedList) oin.readObject();
+    while(true){
+        imprimeMenu();
+        ByteArrayOutputStream b;
+        ObjectOutputStream o;
+        DatagramPacket pacote;
+        DatagramSocket socket;
+        int codigoRequisicao = leInteiro();
+        ByteArrayInputStream bin;
+        ObjectInputStream oin;
+        InetAddress endereco;
+        byte[] buffer;
+        try{
+            b = new ByteArrayOutputStream();
+            o = new ObjectOutputStream(b);
+            o.flush();
+            o.writeObject(codigoRequisicao);
+    //        System.out.println("Escrevi no ObjectOutputStream");    
 
-//                }
-//            }
-            
+
+    //            byte[] buffer = b.toByteArray();
+    //            for(int i = 0; i < buffer.length; i++){
+    //                System.out.println((byte) buffer[i]);
+    //            }
+
+
+
+
+                if(codigoRequisicao == 3){
+                    String nomeDoArquivo = leString();
+//                    if(contemArquivo(nomeDoArquivo)) throw new Exception("Esse arquivo já esta em seu diretorio");
+                    o.writeObject(nomeDoArquivo);
+
+                }
+                if (codigoRequisicao == 7){
+                    String nomeDoArquivo = leString();
+                    String ip = leString();
+                    endereco = InetAddress.getByName(ip);
+                    System.out.println(endereco.getHostAddress());
+                    o.writeObject(endereco);
+                    o.writeObject(nomeDoArquivo);
+                }
+                pacote = new  DatagramPacket(b.toByteArray(), b.toByteArray().length, InetAddress.getByName("255.255.255.255"), 12345);
+    //            System.out.println("Criei o pacote do cliente");
+                socket = new DatagramSocket();
+    //            System.out.println("Criei o socket do cliente");
+                socket.send(pacote);
+    //            System.out.println("Enviei o pacote do cliente");
+                socket.close();
+    //            System.out.println("Fechei o socket cliente");
+                pacote = null;
+                b = null;
+                o = null;
+
+
+
+
+    //            
+    //            if(codigoRequisicao == 5){
+    //                LinkedList listaDeArquivos = (LinkedList) oin.readObject();
+
+    //                }
+    //            }
+
+        }
+        catch(Exception bola){
+            bola.printStackTrace();
+        }
     }
-    catch(Exception bola){
-        bola.printStackTrace();
-    }
-    
 }// fim run
 
 
